@@ -37,8 +37,8 @@
 ## Changelog
 
 ## Roadmap
-[ ] Add difficulty levels
-[ ] Add a multiplayer option
+- [ ] Add difficulty levels
+- [ ] Add a multiplayer option
 
 ## Contact
 
