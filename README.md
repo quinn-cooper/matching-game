@@ -18,19 +18,19 @@
 
 ## Overview
 
-    ### My Inspiration
+### My Inspiration
 
-    ### Features
+### Features
     
-    ### Tools and Frameworks Used
+### Tools and Frameworks Used
 
-    ### Browser Support
+### Browser Support
 
 ## How to Play
 
-    ### Demo
+### Demo
 
-    ### Playing the Game
+### Playing the Game
 
 ## Troubleshooting and Issues
 
