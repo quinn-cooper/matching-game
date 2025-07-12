@@ -5,42 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play a matching game based on Invasion of the Body Snatchers!">
+
+    <!-- Headers font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Chicle&family=Encode+Sans:wght@100..900&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Londrina+Solid:wght@100;300;400;900&family=Murecho:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Ranchers&family=Share:ital,wght@0,400;0,700;1,400;1,700&family=Spicy+Rice&display=swap"
+        rel="stylesheet">
+
+    <!-- Body font -->
+
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/styles.css">
 
-    <title>Evade the Body Snatchers | JavaScript Matching Game</title>
+    <title>Match Before You're Snatched | JavaScript Matching Game</title>
 </head>
 
-<body>
-    <header>
-        <h1>Evade the Body Snatchers</h1>
-    </header>
-
+<body data-theme="light">
     <main>
 
-        <div class="main-menu-buttons">
+        <!-- Main Menu -->
+        <div class="main-menu" id="main-menu">
+            <h1>Match Before You're Snatched</h1>
             <button id="info-btn">Instructions
             </button>
             <button class="new-game" id="new-game">New Game
             </button>
+
+            <!-- Audio toggle -->
+            <div id="audio-label">Audio</div>
+            <label for="toggle" class="audio-toggle">
+                <input type="checkbox" aria-labelledby="audio-label">
+            </label>
+
         </div>
 
-        <div class="audio-toggle">
+        <!-- Add light/dark mode -->
 
-        </div>
-
+        <!-- Instructions -->
         <section class="instructions">
             <h2>How to Play</h2>
             <p>Successfully match all the cards before the pod people realize you’re human! Click on the cards to reveal
                 the images underneath. Win the game by matching all pairs with fewer than 5 mismatches before the timer
                 runs out (you have 2 minutes).</p>
+
             <button class="new-game" id="new-game">New Game
             </button>
         </section>
 
-        <footer>
+        <!-- Game Board -->
+        <div class="gameboard">
+            <h2><span class="gameboard-header">Match Before You're Snatched </span></h2>
 
+            <div class="stats"><span class="matches">Matches: </span><span class="match-counter" id="match-increase"><strong>0</strong></span></div>
+            <div class="stats"><span class="mismatches">Mismatches: </span><span class="mismatch-counter"
+                    id="mismatch-increase"><strong>0</strong></span></div>
+            <div class="stats"><span class="time-left">Time Left: </span><span class="timer" id="time-countdown"><strong>2:00</strong></span></div>
 
+            <div class="gameboard-container">
+
+            </div>
+
+        </div>
+
+        <footer>&copy; Quinn Cooper | 2025
         </footer>
 
     </main>
