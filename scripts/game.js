@@ -1,3 +1,165 @@
+// const mainMenu = document.getElementById('main-menu');
+// const instructions = document.getElementById('instructions');
+// const gameboard = document.getElementById('gameboard');
+// const gameOver = document.getElementById('game-over');
+// const winGame = document.getElementById('win-game');
+// const cardDesign = document.querySelectorAll('.card-design')
+// const cardImage = document.querySelectorAll('.card-image')
+
+// // Button variables
+// const newGameBtn = document.querySelectorAll('.new-game');
+// const infoBtn = document.getElementById('info-btn');
+// const exitGame = document.getElementById('exit-game');
+
+// When game loads
+// instructions.style.display = 'none';
+// gameboard.style.display = 'none';
+// gameOver.style.display = 'none';
+// winGame.style.display = 'none';
+
+// Audio toggle
 
 
-console.log('hello!')
+// Instructions
+// infoBtn.addEventListener('click', function () {
+//     mainMenu.style.display = 'none';
+//     instructions.style.display = 'block';
+// })
+
+// -------- Start a new game
+// newGameBtn.forEach(function (startBtn) {
+//     startBtn.addEventListener('click', function () {
+//         mainMenu.style.display = 'none';
+//         instructions.style.display = 'none';
+//         gameboard.style.display = 'block';
+//         cardImage.forEach(image => {
+//             image.style.display = 'none';
+
+//         });
+
+//     })
+// })
+
+// Exit game
+// exitGame.addEventListener('click', function () {
+//     instructions.style.display = 'none';
+//     gameboard.style.display = 'none';
+//     mainMenu.style.display = 'block';
+// })
+
+class Game {
+    constructor(cards) {
+        // DOM elements
+        this.mainMenu = document.getElementById('main-menu');
+        this.instructions = document.getElementById('instructions');
+        this.gameboard = document.getElementById('gameboard');
+        this.gameOver = document.getElementById('game-over');
+        this.winGame = document.getElementById('win-game');
+        this.cardDesign = document.querySelectorAll('.card-design');
+        this.cardImage = document.querySelectorAll('.card-image')
+
+
+        // Buttons
+        this.newGameBtn = document.querySelectorAll('.new-game');
+        this.infoBtn = document.getElementById('info-btn');
+        this.exitGame = document.getElementById('exit-game');
+
+        // Setup
+        this.cards = cards;
+        this.flipCard = [];
+        this.turns = 0;
+        this.matches = 0;
+        this.mismatches = 0;
+        this.maxMatches = 9;
+        this.maxMismatches = 5;
+
+        // When game first loads
+        this.gameLoad();
+
+        // Set up buttons
+        this.initBtns();
+    }
+
+    gameLoad() {
+        this.instructions.style.display = 'none';
+        this.gameboard.style.display = 'none';
+        this.gameOver.style.display = 'none';
+        this.winGame.style.display = 'none';
+    }
+
+    initBtns() {
+        this.infoBtn.addEventListener('click', () => {
+            this.mainMenu.style.display = 'none';
+            this.gameOver.style.display = 'none';
+            this.winGame.style.display = 'none';
+            this.instructions.style.display = 'block';
+        })
+
+        // New game button
+        this.newGameBtn.forEach(btn => {
+            btn.addEventListener('click', () => this.newGame());
+        });
+
+        // Exit button
+        this.exitGame.addEventListener('click', () => {
+            this.gameboard.style.display = 'none';
+            this.gameOver.style.display = 'none';
+            this.winGame.style.display = 'none';
+            this.instructions.style.display = 'none';
+            this.mainMenu.style.display = 'block';
+        })
+    }
+
+    newGame() {
+        this.mainMenu.style.display = 'none';
+        this.instructions.style.display = 'none';
+        this.gameOver.style.display = 'none';
+        this.winGame.style.display = 'none';
+        this.gameboard.style.display = 'block';
+
+        // Reset the following
+        this.flipCard = [];
+        this.turns = 0;
+        this.matches = 0;
+        this.mismatches = 0;
+
+        this.cards = this.shuffle(this.cards);
+
+        this.setupCards();
+    }
+
+    shuffle(cards) {
+        for (let i = cards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cards[i], cards[j]] = [cards[j], cards[i]];
+            console.log(cards)
+        }
+        return cards;
+    }
+    // Card shuffle source - https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+
+    setupCards() {
+        const htmlCards = this.gameboard.querySelectorAll('.card');
+        htmlCards.forEach((cardEl, i) => {
+            const card = this.cards[i];
+            cardEl.dataset.id = card.id;
+            cardEl.classList.remove('flipped', 'matched');
+            const frontImg = cardEl.querySelector('.card-image img');
+            frontImg.src = card.path;
+            frontImg.alt = card.name;
+            cardEl.classList.remove('flipped');
+
+        })
+
+        const shuffledCards = this.cards;
+    }
+
+
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const game = new Game(cards);
+})
