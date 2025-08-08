@@ -23,7 +23,8 @@
     <title>Match Before You're Snatched | JavaScript Matching Game</title>
 </head>
 
-<body>
+<!-- Dark/Light mode button -->
+<body data-theme="light">
     <main>
 
         <!-- Main Menu -->
@@ -38,12 +39,16 @@
             <!-- </div> -->
 
             <!-- Audio toggle -->
-            <div id="audio-label">Audio Toggle (off/on)
+            <div id="audio-label">
+                <span id="audio-state">Audio OFF</span>
                 <label class="audio-toggle">
                     <input type="checkbox" id="toggle" aria-labelledby="audio-label">
                     <span class="slide"></span>
                 </label>
             </div>
+
+            <!-- Dark/light mode button -->
+            <button id="color-theme">Dark Mode</button>
         </div>
 
         <!-- Instructions -->
@@ -65,15 +70,18 @@
 
             <div class="counter-btn-container">
                 <!-- Counters -->
-                <div class="stats"><span class="matches">Matches: </span><span class="match-counter"
-                        id="match-counter">0</span></div>
-                <div class="stats"><span class="mismatches">Mismatches: </span><span class="mismatch-counter"
-                        id="mismatch-counter">0</span>/10
+                <div class="counters">
+                    <div class="stats"><span class="matches">Matches: </span>
+                        <span class="match-counter" id="match-counter">0</span>
+                    </div>
+                    <div class="stats"><span class="mismatches">Mismatches: </span>
+                        <span class="mismatch-counter" id="mismatch-counter">0</span>/10
+                    </div>
                 </div>
 
                 <!-- Exit game -->
                 <div class="exit">
-                    <button class="exit-game" id="exit-game">X
+                    <button class="exit-game" id="exit-game">Exit
                     </button>
                 </div>
             </div>
@@ -316,8 +324,10 @@
     <audio id="game-win" src="audio/game-win-bagpipes.mp3"></audio>
     <audio id="game-over-screech" src="audio/game-over-screech.mp3"></audio>
 
+    <script src="scripts/color-theme.js"></script>
     <script src="scripts/cards.js"></script>
     <script src="scripts/game.js"></script>
+    <script src="scripts/toggle.js"></script>
 
 </body>
 
