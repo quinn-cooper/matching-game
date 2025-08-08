@@ -21,11 +21,7 @@ class Game {
         // Setup
         this.cards = cards;
         this.flippedCard = [];
-        this.preventOpen = false;
         this.isProcessing = false;
-        this.canClick = true;
-        this.turns = 0;
-        this.cardsPerTurn = 0;
         this.matches = 0;
         this.mismatches = 0;
         this.maxMatches = 9;
@@ -50,21 +46,22 @@ class Game {
     }
 
     initBtns() {
-        // Instructions button
+        // Instructions
         this.infoBtn.addEventListener('click', () => {
             this.mainMenu.style.display = 'none';
             this.gameboard.style.display = 'none';
             this.gameOver.style.display = 'none';
             this.winGame.style.display = 'none';
             this.instructions.style.display = 'block';
+            this.audio.playInfo();
         })
 
-        // New game button
+        // New game
         this.newGameBtn.forEach(btn => {
             btn.addEventListener('click', () => this.newGame());
         });
 
-        // Exit button
+        // Exit game
         this.exitGame.addEventListener('click', () => {
             this.gameboard.style.display = 'none';
             this.gameOver.style.display = 'none';
@@ -84,15 +81,23 @@ class Game {
         // Reset the following
         this.flippedCard = [];
         this.isProcessing = false;
-        this.turns = 0;
         this.matches = 0;
         this.mismatches = 0;
+        this.statsCounter();
 
         this.cards = this.shuffle(this.cards);
 
         this.setupCards();
+
+        // Reset audio (stop win/lose audio) - source: https://stackoverflow.com/questions/14834520/html5-audio-stop-function
+        this.audio.infoAudio.pause();
+        this.audio.gameOverAudio.pause();
+        this.audio.gameOverAudio.currentTime = 0;
+        this.audio.winAudio.pause();
+        this.audio.winAudio.currentTime = 0;
     }
 
+    // Card shuffle - source: https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
     shuffle(cards) {
         for (let i = cards.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -101,7 +106,6 @@ class Game {
         }
         return cards;
     }
-    // Card shuffle source - https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 
     setupCards() {
         const htmlCards = this.gameboard.querySelectorAll('.card');
@@ -188,7 +192,7 @@ class Game {
         this.gameboard.style.display = 'none';
         this.gameOver.style.display = 'none';
         this.winGame.style.display = 'block';
-        this.audio.winGame();
+        this.audio.playWin();
     }
 
     loseGame() {
@@ -197,7 +201,7 @@ class Game {
         this.gameboard.style.display = 'none';
         this.winGame.style.display = 'none';
         this.gameOver.style.display = 'block';
-        this.audio.loseGame();
+        this.audio.playLose();
 
     }
 }
@@ -208,24 +212,46 @@ class Audio {
         this.infoAudio = document.querySelector('#info-audio');
         this.winAudio = document.querySelector('#game-win');
         this.gameOverAudio = document.querySelector('#game-over-screech')
+        this.mute = true;
+    }
+
+    playInfo() {
+        if (!this.mute) {
+            this.infoAudio.play();
+            this.infoAudio.volume = 0.4;
+        } else {this.mute}
     }
 
     playFlip() {
-        this.flipAudio.play();
-        this.flipAudio.volume = 0.3;
+        if (!this.mute) {
+            this.flipAudio.play();
+            this.flipAudio.volume = 0.3;
+        } else {this.mute}
     }
 
-    winGame() {
-        this.winAudio.play();
-        this.winAudio.volume = 0.3;
+    playWin() {
+        if (!this.mute) {
+            this.winAudio.play();
+            this.winAudio.volume = 0.2;
+        } else {this.mute}
     }
 
-    loseGame() {
-        this.gameOverAudio.play();
-        this.gameOverAudio.volume = 0.4;
+    playLose() {
+        if (!this.mute) {
+            this.gameOverAudio.play();
+            this.gameOverAudio.volume = 0.3;
+        } else {this.mute}
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const game = new Game(cards);
+const game = new Game(cards)
+
+// Toggle audio (muted by default)
+const toggle = document.getElementById('toggle');
+toggle.addEventListener('change', function() {
+    if (this.checked) {
+        game.audio.mute = false;
+    } else {
+        game.audio.mute = true;
+    }
 })
