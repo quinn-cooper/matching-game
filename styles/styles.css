@@ -74,10 +74,10 @@ html {
 
 /* Dark Mode */
 
-body {
-    /* background-color: #221410;
-    color: #faf3e0; */
-}
+/* body {
+    background-color: #221410;
+    color: #faf3e0; 
+} */
 
 /* Light Mode */
 
@@ -87,7 +87,6 @@ body {
     --game-stats:
 
 } */
-
 
 /* Typography --------------- */
 
@@ -139,7 +138,7 @@ p {
     cursor: pointer;
     padding: 10px;
     margin: 10px 5px 40px 5px;
-    align-items: center;
+    text-align: center;
     background-color: #5B85F0;
     border: 3px solid #221411;
     border-radius: 15px;
@@ -154,11 +153,35 @@ p {
     9px 9px #f7f4f0;
 }
 
+#info-btn:active,
+.new-game:active {
+    box-shadow: 2px 2px #f7f4f0;
+    transform: translateY(5px);
+}
+
 .exit-game {
+    cursor: pointer;
     display: block;
     cursor: pointer;
     padding: 10px;
     margin: 20px auto;
+    background-color: #5B85F0;
+    border: 3px solid #f7f4f0;
+    border-radius: 15px;
+    box-shadow: 1px 1px #221411,
+    2px 2px #221411,
+    3px 3px #221411,
+    4px 4px #221411,
+    5px 5px #221411,
+    6px 6px #221411,
+    7px 7px #221411,
+    8px 8px #221411,
+    9px 9px #221411;
+}
+
+.exit-game:active {
+    box-shadow: 2px 2px #221411;
+    transform: translateY(5px);
 }
 
 /* Game Load ======================================
@@ -174,16 +197,8 @@ p {
     padding: 10px;
     margin: 30px 20px;
     background-color: #221410;
-    /* color: #f7f4f0; */
-    /* background-color: #221410; */
-    /* border-radius: 30px; */
-    /* box-shadow: 0 5px 10px #fdf6f0; */
-    /* position: absolute; */
     text-align: center;
     z-index: 1;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 @media (min-width:50em) {
@@ -214,8 +229,6 @@ p {
     margin: 30px 20px;
     background-color: #221410;
     color: #f7f4f0;
-    /* border-radius: 30px;
-    box-shadow: 0 5px 10px #fdf6f0; */
     text-align: center;
     z-index: 1;
 }
@@ -384,9 +397,95 @@ input:checked+.slide::before {
 
 /* Win Game ----------------- */
 
+.win-game-header {
+    color: #f7f4f0;
+}
+
+#win-game {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    margin: 30px 20px;
+    background-color: #221410;
+    text-align: center;
+    z-index: 1;
+}
+
+#win-game img {
+    height: auto;
+    width: 250px;
+    margin-top: 10px;
+    border: 6px solid #f7f4f0;
+}
+
+#win-game button {
+    display: block;
+    width: auto;
+    margin: 20px auto;
+}
+
+@media(min-width: 46.875em) {
+    #win-game {
+        width: 700px;
+        padding: 10px 50px;
+        margin: 30px auto;
+    }
+
+    #win-game img {
+        height: auto;
+        width: 600px;
+    }
+}
 
 /* Lose Game ---------------- */
 
+.game-over-header {
+    color: #f7f4f0;
+}
+
+#game-over {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    margin: 30px 20px;
+    background-color: #221410;
+    text-align: center;
+    z-index: 1;
+}
+
+#game-over img {
+    height: auto;
+    width: 250px;
+    margin-top: 10px;
+    border: 6px solid #f7f4f0;
+}
+
+#game-over button {
+    display: block;
+    width: auto;
+    margin: 20px auto;
+}
+
+@media(min-width: 46.875em) {
+    #game-over {
+        width: 700px;
+        padding: 10px 50px;
+        margin: 30px auto;
+    }
+
+    #game-over img {
+        height: auto;
+        width: 600px;
+    }
+}
 
 /* Footer =========================================
 ================================================ */

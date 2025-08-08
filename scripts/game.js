@@ -1,52 +1,3 @@
-// const mainMenu = document.getElementById('main-menu');
-// const instructions = document.getElementById('instructions');
-// const gameboard = document.getElementById('gameboard');
-// const gameOver = document.getElementById('game-over');
-// const winGame = document.getElementById('win-game');
-// const cardDesign = document.querySelectorAll('.card-design')
-// const cardImage = document.querySelectorAll('.card-image')
-
-// // Button variables
-// const newGameBtn = document.querySelectorAll('.new-game');
-// const infoBtn = document.getElementById('info-btn');
-// const exitGame = document.getElementById('exit-game');
-
-// When game loads
-// instructions.style.display = 'none';
-// gameboard.style.display = 'none';
-// gameOver.style.display = 'none';
-// winGame.style.display = 'none';
-
-// Audio toggle
-
-
-// Instructions
-// infoBtn.addEventListener('click', function () {
-//     mainMenu.style.display = 'none';
-//     instructions.style.display = 'block';
-// })
-
-// -------- Start a new game
-// newGameBtn.forEach(function (startBtn) {
-//     startBtn.addEventListener('click', function () {
-//         mainMenu.style.display = 'none';
-//         instructions.style.display = 'none';
-//         gameboard.style.display = 'block';
-//         cardImage.forEach(image => {
-//             image.style.display = 'none';
-
-//         });
-
-//     })
-// })
-
-// Exit game
-// exitGame.addEventListener('click', function () {
-//     instructions.style.display = 'none';
-//     gameboard.style.display = 'none';
-//     mainMenu.style.display = 'block';
-// })
-
 class Game {
     constructor(cards) {
         // DOM elements
@@ -78,13 +29,16 @@ class Game {
         this.matches = 0;
         this.mismatches = 0;
         this.maxMatches = 9;
-        this.maxMismatches = 5;
+        this.maxMismatches = 10;
 
         // When game first loads
         this.gameLoad();
 
         // Set up buttons
         this.initBtns();
+
+        // Audio
+        this.audio = new Audio();
     }
 
     gameLoad() {
@@ -163,12 +117,6 @@ class Game {
             frontImg.alt = card.name;
 
             cardEl.onclick = () => this.clickCard(card)
-
-            // cardEl.addEventListener('click', () => {
-            //     this.clickCard(card);
-            //     // card.el.classList.toggle('flipped');
-            //     // card.isFlipped = !card.isFlipped;
-            // })
         })
 
         const shuffledCards = this.cards;
@@ -186,7 +134,10 @@ class Game {
 
         // Enable card flipping and keep track of flipped cards
         card.el.classList.toggle('flipped');
+        this.audio.playFlip();
         this.flippedCard.push(card);
+
+        // Card flip resource - Youtube video: https://youtu.be/c_SMmEea8pw?si=MIW4-YePl5E2SAgR
 
         if (this.flippedCard.length === 2) {
             this.isProcessing = true;
@@ -213,18 +164,68 @@ class Game {
                 // Reset processing state after a match/mismatch is checked for
                 this.isProcessing = false;
                 this.flippedCard = [];
-            }, 2000)
+            }, 1500)
         }
     }
 
     statsCounter() {
         this.matchCounter.innerHTML = this.matches;
         this.mismatchCounter.innerHTML = this.mismatches;
+
+        if(this.matches === this.maxMatches) {
+            this.surviveGame();
+        }
+
+        if(this.mismatches === this.maxMismatches) {
+            this.loseGame();
+
+        }
+    }
+
+    surviveGame() {
+        this.mainMenu.style.display = 'none';
+        this.instructions.style.display = 'none';
+        this.gameboard.style.display = 'none';
+        this.gameOver.style.display = 'none';
+        this.winGame.style.display = 'block';
+        this.audio.winGame();
+    }
+
+    loseGame() {
+        this.mainMenu.style.display = 'none';
+        this.instructions.style.display = 'none';
+        this.gameboard.style.display = 'none';
+        this.winGame.style.display = 'none';
+        this.gameOver.style.display = 'block';
+        this.audio.loseGame();
+
+    }
+}
+
+class Audio {
+    constructor() { 
+        this.flipAudio = document.querySelector('#flip-card');
+        this.infoAudio = document.querySelector('#info-audio');
+        this.winAudio = document.querySelector('#game-win');
+        this.gameOverAudio = document.querySelector('#game-over-screech')
+    }
+
+    playFlip() {
+        this.flipAudio.play();
+        this.flipAudio.volume = 0.3;
+    }
+
+    winGame() {
+        this.winAudio.play();
+        this.winAudio.volume = 0.3;
+    }
+
+    loseGame() {
+        this.gameOverAudio.play();
+        this.gameOverAudio.volume = 0.4;
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const game = new Game(cards);
 })
-
-// Card flip resource - Youtube video: https://youtu.be/c_SMmEea8pw?si=MIW4-YePl5E2SAgR

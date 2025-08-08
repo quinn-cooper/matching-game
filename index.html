@@ -30,15 +30,15 @@
 
         <div class="menu-container" id="main-menu">
             <h1>Match Before You're Snatched</h1>
-            <div class="btn-div">
+            <!-- <div class="btn-div"> -->
                 <button id="info-btn">Instructions
                 </button>
                 <button class="new-game" id="new-game">New Game
                 </button>
-            </div>
+            <!-- </div> -->
 
             <!-- Audio toggle -->
-            <div id="audio-label">Audio Toggle (on/off)
+            <div id="audio-label">Audio Toggle (off/on)
                 <label class="audio-toggle">
                     <input type="checkbox" id="toggle" aria-labelledby="audio-label">
                     <span class="slide"></span>
@@ -51,7 +51,7 @@
             <h2>How to Play</h2>
             <p>Successfully match all the cards before the pod people realize you’re human! Click on the cards to
                 reveal
-                the images underneath. Win the game by matching all pairs, with fewer than 8 mismatches.</p>
+                the images underneath. Win the game by matching all pairs, with fewer than 10 mismatches.</p>
 
             <button class="new-game" id="new-game">New Game
             </button>
@@ -66,7 +66,7 @@
             <div class="stats"><span class="matches">Matches: </span><span class="match-counter"
                     id="match-counter">0</span></div>
             <div class="stats"><span class="mismatches">Mismatches: </span><span class="mismatch-counter"
-                    id="mismatch-counter">0</span>/8
+                    id="mismatch-counter">0</span>/10
             </div>
 
             <!-- Cards -->
@@ -294,16 +294,24 @@
 
         <!-- Win Game -->
         <div id="win-game">
-            <h2><span class="win-game-header">You Survived...for now. </span></h2>
-            <img src="images/elizabeth.jpg" alt="Elizabeth">
-            <button class="new-game" id="new-game">Play Again?
-            </button>
+            <!-- <div class="win-game-container"> -->
+                <h2><span class="win-game-header">You Survived ... for now. </span></h2>
+                <img src="images/elizabeth.jpg" alt="Elizabeth">
+                <button class="new-game" id="new-game">Play Again?
+                </button>
+            <!-- </div> -->
         </div>
 
         <footer>&copy; Quinn Cooper | 2025
         </footer>
 
     </main>
+
+    <!-- Audio files -->
+    <audio id="flip-card" src="audio/flip-card.mp3"></audio>
+    <audio id="info-audio" src="audio/sci-fi-heartbeat.mp3"></audio>
+    <audio id="game-win" src="audio/game-win-bagpipes.mp3"></audio>
+    <audio id="game-over-screech" src="audio/game-over-screech.mp3"></audio>
 
     <script src="scripts/cards.js"></script>
     <script src="scripts/game.js"></script>
