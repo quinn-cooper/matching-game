@@ -3,9 +3,6 @@ class Card {
         this.matchId = matchId;
         this.name = name;
         this.path = path;
-        this.isFlipped = false;
-        this.isMatched = false;
-        console.log(name)
     }
 }
 
@@ -37,15 +34,3 @@ cards.push(new Card (8, 'Matthew 2', 'images/matthew2.jpg'));
 
 cards.push(new Card (9, 'Nancy', 'images/nancy.jpg'));
 cards.push(new Card (9, 'Nancy', 'images/nancy.jpg'));
-
-
-// function shuffle(cards) {
-//     var j, x, i;
-//     for (i = cards.length - 1; i > 0; i--) {
-//         j = Math.floor(Math.random() * (i + 1));
-//         x = cards[i];
-//         cards[i] = cards[j];
-//         cards[j] = x;
-//     }
-//     return cards;
-// }
