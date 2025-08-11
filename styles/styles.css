@@ -501,7 +501,7 @@ input:checked+.slide::before {
     cursor: pointer;
     width: 150px; 
     height: 200px; 
-    perspective: 1000px;
+    /* perspective: 1000px; */
     border: var(--cards-border);
 }
 
@@ -592,6 +592,7 @@ input:checked+.slide::before {
 }
 
 @media(min-width: 46.875em) {
+
     #win-game,
     #game-over {
         width: 800px;

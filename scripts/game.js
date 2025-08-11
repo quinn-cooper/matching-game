@@ -7,14 +7,14 @@ class Game {
         this.gameOver = document.getElementById('game-over');
         this.winGame = document.getElementById('win-game');
 
-        // Counters
-        this.matchCounter = document.getElementById('match-counter');
-        this.mismatchCounter = document.getElementById('mismatch-counter');
-
         // Buttons
         this.newGameBtn = document.querySelectorAll('.new-game');
         this.infoBtn = document.getElementById('info-btn');
         this.exitGame = document.getElementById('exit-game');
+
+        // Counters
+        this.matchCounter = document.getElementById('match-counter');
+        this.mismatchCounter = document.getElementById('mismatch-counter');
 
         // Setup
         this.cards = cards;
@@ -101,7 +101,6 @@ class Game {
         for (let i = cards.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [cards[i], cards[j]] = [cards[j], cards[i]];
-            console.log(cards)
         }
         return cards;
     }
@@ -121,7 +120,7 @@ class Game {
             img.src = card.path;
             img.alt = card.name;
 
-            cardEl.onclick = () => this.clickCard(card)
+            cardEl.onclick = () => this.clickCard(card);
 
             // Keyboard navigation - ENTER key flips card - source: https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
             cardEl.addEventListener('keydown', (e) => {
