@@ -7,12 +7,11 @@
     - Media Width
 # Base
     - Accessibility
-    - Colors
+    - Light & Dark Mode
     - Typography
     - Other Base Styles
 # Game Buttons
 # Game Load
-    - Header
     - Main Menu
     - Instructions
     - Toggle
@@ -31,18 +30,16 @@ html {
 }
 
 /* Accessibility ------------ */
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
 }
 
-/* Colors ------------------- */
-
-/* Light Mode (Default) */
+/* Light Mode (default) ------------------- */
 
 :root {
-
     /* Main colors */
     --bg-color: #f7f4f0;
     --menu-bg: #221410;
@@ -97,7 +94,7 @@ html {
     --exit-click-shadow: 3px 3px #5e0808;
 }
 
-/* Dark Mode */
+/* Dark Mode (default) -------------------- */
 
 body[data-theme="dark"] {
 
@@ -155,7 +152,7 @@ body[data-theme="dark"] {
     --exit-click-shadow: 3px 3px #6b4d45;
 }
 
-/* Typography --------------- */
+/* Typography ----------------------------- */
 
 h1,
 h2,
@@ -211,18 +208,12 @@ p {
 }
 
 /* Game Buttons ======================================
-================================================ */
-
-/* .btn-div {
-    display: flex;
-    gap: 20px;
-} */
+=================================================== */
 
 #info-btn,
 .new-game {
     cursor: pointer;
     padding: 10px;
-    /* margin: 10px 5px 30px 5px; */
     margin: 30px;
     text-align: center;
     background-color: var(--btn-bg);
@@ -300,6 +291,8 @@ p {
 /* Game Load ======================================
 ================================================ */
 
+/* Main Menu ------------------------------ */
+
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -324,7 +317,8 @@ p {
     }
 }
 
-/* Instructions ------------- */
+/* Instructions --------------------------- */
+
 .instructions {
     display: flex;
     flex-direction: column;
@@ -360,8 +354,9 @@ p {
     }
 }
 
-/* Toggle ------------------ */
+/* Toggle --------------------------------- */
 /* Resource - Geeksforgeeks.com & W3Schools */
+
 #audio-label {
     display: flex;
     justify-content: center;
@@ -429,7 +424,7 @@ input:checked+.slide::before {
 /* Game Board =====================================
 ================================================ */
 
-/* Header & Stats ------------------- */
+/* Header & Stats ------------------------- */
 
 .gameboard-header {
     color: var(--gameboard-heading-color);
@@ -471,7 +466,7 @@ input:checked+.slide::before {
     }
 }
 
-/* Cards -------------------- */
+/* Cards ---------------------------------- */
 
 .gameboard-container {
     display: flex;
@@ -510,10 +505,7 @@ input:checked+.slide::before {
     border: var(--cards-border);
 }
 
-/* .card:focus {
-    outline: var(--cards-focus);
-} */
-
+.card:focus,
 .card:focus-visible {
     outline: var(--cards-focus);
     outline-style: double;
@@ -562,7 +554,7 @@ input:checked+.slide::before {
     opacity: 0.4;
 }
 
-/* Win/Lose Game ----------------- */
+/* Win/Lose Game -------------------------- */
 
 .win-game-header,
 .game-over-header {
@@ -592,16 +584,6 @@ input:checked+.slide::before {
     width: 250px;
 }
 
-/* #win-game img {
-    height: auto;
-    width: 250px;
-}
-
-#game-over img {
-    height: auto;
-    width: 180px;
-} */
-
 #win-game button,
 #game-over button {
     display: block;
@@ -610,7 +592,6 @@ input:checked+.slide::before {
 }
 
 @media(min-width: 46.875em) {
-
     #win-game,
     #game-over {
         width: 800px;

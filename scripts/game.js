@@ -6,8 +6,6 @@ class Game {
         this.gameboard = document.getElementById('gameboard');
         this.gameOver = document.getElementById('game-over');
         this.winGame = document.getElementById('win-game');
-        // this.cardDesign = document.querySelectorAll('.card-design');
-        // this.cardImage = document.querySelectorAll('.card-image');
 
         // Counters
         this.matchCounter = document.getElementById('match-counter');
@@ -187,7 +185,7 @@ class Game {
         this.matchCounter.innerHTML = this.matches;
         this.mismatchCounter.innerHTML = this.mismatches;
 
-        // If user matches all cards, run surviveGame method
+        // If user matches all cards, run surviveGame()
         if (this.matches === this.maxMatches) {
             this.surviveGame();
         }
@@ -265,7 +263,7 @@ const game = new Game(cards)
 // Toggle audio (muted by default)
 const toggle = document.getElementById('toggle');
 toggle.addEventListener('change', function () {
-    // When the toggle is switched (checked), the audio is enabled
+    // When the toggle is switched, the audio is enabled
     if (this.checked) {
         game.audio.mute = false;
     } else {
