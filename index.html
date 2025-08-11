@@ -5,21 +5,329 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play a matching game based on Invasion of the Body Snatchers!">
-    <title>JavaScript Matching Game | Invasion of the Body Snatchers</title>
+
+    <!-- Header font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <title>Match Before You're Snatched | JavaScript Matching Game</title>
 </head>
 
-<body>
-    <header>
-    </header>
+<!-- Dark/Light mode button -->
 
+<body data-theme="light">
     <main>
-        <h1></h1>
 
-        <footer>
+        <!-- Main Menu -->
 
+        <div class="menu-container" id="main-menu">
+            <h1>Match Before You're Snatched</h1>
+
+            <button id="info-btn">Instructions
+            </button>
+            <button class="new-game">New Game
+            </button>
+
+            <!-- Audio toggle -->
+            <div id="audio-label">
+                <span id="audio-state">Audio OFF</span>
+                <label class="audio-toggle">
+                    <input type="checkbox" id="toggle" aria-labelledby="audio-label">
+                    <span class="slide"></span>
+                </label>
+            </div>
+
+            <!-- Dark/light mode button -->
+            <button id="color-theme">Dark Mode</button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions" id="instructions">
+            <h2>How to Play</h2>
+            <p>Successfully match all the cards before the pod people realize you’re human! Click on the cards to
+                reveal
+                the images underneath. Win the game by matching all pairs, with fewer than 12 mismatches.</p>
+
+            <button class="new-game">New Game
+            </button>
+        </div>
+
+        <!-- Game Board -->
+        <div id="gameboard">
+            <h2><span class="gameboard-header">Match Before You're Snatched </span></h2>
+
+                <div class="counter-btn-container">
+                    <!-- Counters -->
+                    <div class="counters">
+                        <div class="stats"><span class="matches">Matches: </span>
+                            <span class="match-counter" id="match-counter">0</span>
+                        </div>
+                        <div class="stats"><span class="mismatches">Mismatches: </span>
+                            <span class="mismatch-counter" id="mismatch-counter">0</span>/13
+                        </div>
+                    </div>
+
+                    <!-- Exit game -->
+                    <div class="exit">
+                        <button class="exit-game" id="exit-game">Exit
+                        </button>
+                    </div>
+                </div>
+
+            <!-- Cards -->
+            <div class="gameboard-container">
+                <div class="cards" id="cards">
+
+                    <!-- Card 1 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/dog-man.jpg" alt="dog man" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/dog-man.jpg" alt="dog man" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/dr-kibner.jpg" alt="dr. kibner" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/dr-kibner.jpg" alt="dr. kibner" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/elizabeth2.jpg" alt="elizabeth" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/elizabeth2.jpg" alt="elizabeth" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/elizabeth3.jpg" alt="elizabeth" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/elizabeth3.jpg" alt="elizabeth" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/jack.jpg" alt="jack" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/jack.jpg" alt="jack" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 11 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/jack2.jpg" alt="jack2" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 12 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/jack2.jpg" alt="jack2" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 13 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/matthew.jpg" alt="matthew" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 14 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/matthew.jpg" alt="matthew" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 15 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/matthew2.jpg" alt="matthew" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 16 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/matthew2.jpg" alt="matthew" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 17 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/nancy.jpg" alt="nancy" width="150" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Card 18 -->
+                    <div class="card" tabindex="0">
+                        <div class="card-design">
+                            <img src="images/floral-yellow-green.jpg" alt="floral yellow card design" width="150"
+                                height="200">
+                        </div>
+                        <div class="card-image">
+                            <img src="images/nancy.jpg" alt="nancy" width="150" height="200">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End gameboard-container -->
+
+        </div>
+        <!-- End gameboard -->
+
+        <!-- Game Over -->
+        <div id="game-over">
+            <h2><span class="game-over-header"> You've Been Snatched! Game Over! </span></h2>
+            <img src="images/screech.jpg" alt="Michael">
+            <button class="new-game">Play Again?
+            </button>
+        </div>
+
+        <!-- Win Game -->
+        <div id="win-game">
+            <!-- <div class="win-game-container"> -->
+            <h2><span class="win-game-header">You Survived ... for now. </span></h2>
+            <img src="images/elizabeth.jpg" alt="Elizabeth">
+            <button class="new-game">Play Again?
+            </button>
+            <!-- </div> -->
+        </div>
+
+        <footer>&copy; Quinn Cooper | 2025
         </footer>
 
     </main>
+
+    <!-- Audio files -->
+    <audio id="flip-card" src="audio/flip-card.mp3"></audio>
+    <audio id="info-audio" src="audio/sci-fi-heartbeat.mp3"></audio>
+    <audio id="game-win" src="audio/game-win-bagpipes.mp3"></audio>
+    <audio id="game-over-screech" src="audio/game-over-screech.mp3"></audio>
+
+    <script src="scripts/color-theme.js"></script>
+    <script src="scripts/cards.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/toggle.js"></script>
 
 </body>
 
