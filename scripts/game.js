@@ -84,7 +84,8 @@ class Game {
         this.mismatches = 0;
         this.statsCounter();
 
-        this.cards = this.shuffle(this.cards);
+        this.shuffle(this.cards);
+        console.log(this.shuffle(this.cards))
 
         this.setupCards();
 
@@ -144,7 +145,7 @@ class Game {
         }
 
         // Enable card flipping (by toggling .flipped class), play a flip audio when a card if flipped, and keep track of flipped cards
-        card.el.classList.toggle('flipped');
+        card.el.classList.add('flipped');
         this.audio.playFlip();
         this.flippedCard.push(card);
 
@@ -230,8 +231,8 @@ class Audio {
     // If audio isn't muted, play the audio
     playInfo() {
         if (!this.mute) {
-            this.infoAudio.play();
             this.infoAudio.volume = 0.4;
+            this.infoAudio.play();
         }
     }
 
@@ -244,15 +245,15 @@ class Audio {
 
     playWin() {
         if (!this.mute) {
-            this.winAudio.play();
             this.winAudio.volume = 0.2;
+            this.winAudio.play();
         }
     }
 
     playLose() {
         if (!this.mute) {
-            this.gameOverAudio.play();
             this.gameOverAudio.volume = 0.3;
+            this.gameOverAudio.play();
         }
     }
 }
